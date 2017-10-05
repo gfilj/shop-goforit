@@ -1,0 +1,277 @@
+
+.my-title{
+	font-size: 16px;
+	font-weight: 900;
+}
+.my-tablecell{
+	font-size: 14px;
+	padding-left:  30px;
+}
+.my-tablecell > p{
+	font-size: 14px;
+	padding-right: 40px;
+	padding-top: 10px;
+}
+a{
+	color:#444444;
+}
+.my-header{
+	background-color: #ffffff;
+	border-bottom: 1px #aaaaaa solid;
+	box-shadow:0 0 0 #ccc;
+}
+
+.my-city{
+	background-color: transparent;
+	color: #101010;
+	font-size: 14px;
+}
+.my-address{
+	height:47px;
+	line-height: 20px;
+	font-size: 14px;
+	border-bottom: 1px rgba(170,170,170,0.3) solid;
+	border-bottom-color: 
+}
+.my-address:after{
+	content:"";
+	height:0;
+}
+.my-pic{
+	width:98px;
+	height:98px;
+}
+.my-store{
+	font-size: 14px;
+	padding:5px 15px;
+}
+.my-paragraph{
+	position: absolute;
+	bottom:10px;
+	font-size: 14px;
+}
+.my-content{
+	background-color: transparent;
+	font-size: 13px;
+	margin:0 0;
+	padding-left: 19px;
+	padding-right: 75px;
+}
+.my-content-pay{
+	font-size: 13px;
+	padding-left: 18px;
+	padding-right: 55px;
+	color:#888888;
+}
+.my-changebutton{
+	font-size: 14px;
+	color:#101010;
+	float:right;
+	text-decoration:underline;
+	padding-right: 25px;
+}
+.my-changepw{
+	
+	top:70px;
+	background-color: transparent;
+	font-size: 14px;
+}
+.mui-input-group:before{
+	height:0;
+}
+ .mui-input-group .mui-input-row:after{
+ 	height:0;
+ }
+ .my-text{
+ 	border:1px #888888 solid !important;
+ 	border-radius: 8px !important;
+ 	width:200px !important;
+ 	height:30px !important;
+ 	font-size: 14px;
+ }
+ .my-changepw label{
+ 	margin-left:  20px;
+ 	margin-right: 10px;
+ }
+ .my-content-padded{
+	margin:20px;
+ }
+ .my-content-padded button{
+ 	background-color: #ff6700;
+ 	font-size: 14px;
+ }
+ .my-phonenum{
+	text-align: center;
+	font-size: 13px;
+ }
+ .mui-input-group:after{
+ 	height:0;
+ }
+ .my-property{
+ 	border: 1px #aaaaaa solid;
+ 	margin: 10px 0;
+ }
+ .my-card-ul{
+ 	padding:0;
+ 	margin:0;
+
+ }
+ .my-card-ul li{
+	margin-top: 9px;
+	width:100%;
+	/*height: 78px;*/
+	list-style-type:none;
+}
+
+.my-money-body{
+	width: 350px;
+	height: 84px;
+	margin:0 auto;
+}
+.my-money{
+	font-size: 20px;
+	color:#ffffff;
+	width:130px;
+	height:64px;
+	text-align: center;
+	float: left;
+	margin: 10px 0;
+	font-weight: 900;
+}
+.my-card{
+	font-size: 15px;
+	padding: 10px 0;
+}
+.my-money a{
+	text-decoration: none;
+	-webkit-text-size-adjust:none;
+	font-size: 11px;
+	color: #ffffff;
+	font-weight: 100;
+}
+.my-money label{
+	font-size: 40px;
+	line-height: 40px;
+}
+.my-money-content{
+	font-size: 18px;
+	color:#4a4a4a;
+	width: 217px;
+	height: 84px;
+	float: right;
+	padding-left: 10px;
+	font-weight: 900;
+}
+.my-money-content span{
+	position: relative;
+	right: 5px;
+	float: right;
+	color: #999999;
+	font-size: 9px;
+	/*-webkit-transform: scale(0.83);*/
+	font-weight: 100;
+}
+.my-money-content label{
+	color:#a14105;
+	font-size: 21px;
+}
+.my-money-content p{
+	color:#262626;
+	font-size: 8px;
+	-webkit-transform: scale(0.83);
+	padding-top: 10px;
+	font-weight: 100;
+}
+.my-tab{
+	background-color: #ffffff;
+	font-size: 14px;
+	height:34px;
+	color: #757475;
+}
+.my-list-1{
+	float: right;
+	width: 70%;
+	margin: 0 0;
+	padding-left:10px;
+	white-space:normal;
+	font-size: 13px;
+	height: 70px;
+}
+.my-list-1 p{
+	float: bottom;
+	width:215px;
+	font-size:14px;
+	padding-top: 10px;
+}
+.my-list-1 span{
+	float: right;
+	color: #757475;
+}
+.my-list-2{
+	width:100%;
+	font-size:12px;
+	float: left;
+	line-height: 31px;
+}
+.my-list-2 button{
+	float: right;
+	margin-right:10px;
+	font-size:12px;
+}
+.my-qui-ul{
+	height:145px;
+	border-bottom: 1px #bbbbbb solid;
+	border-top: 1px #bbbbbb solid;
+	margin-top:2px;
+}
+.my-qui-li{
+	border-bottom:1px #bbbbbb solid;
+}
+.my-qui-li div{
+	font-size:10px;
+	line-height:25px;
+}
+.my-shop-tab{
+	position: relative;
+	top: 44px;
+	z-index: 1000;
+	float: right;
+	color:#101010;
+}
+.my-count{
+	color: red;
+	border-radius: 50%;
+	border:1px red solid;
+	width: 20px;
+	height:20px;
+	font-size: 21px;
+	padding:0 3px;
+	float: right;
+	line-height: 18px;
+}
+.my-mouth{
+	color: #808080;
+	font-size: 15px;
+}
+.my-paymouth{
+	height:579px;
+}
+.my-pay-li{
+	border: 1px #aaaaaa solid;
+	height: 510px;
+}
+#monthslt li{
+	border:1px #aaaaaa solid;
+}
+.my-timeover{
+	height:25px;
+	margin:0 10px;
+	border-bottom:1px rgba(170,170,170,0.4) solid;
+	font-size: 14px;
+	line-height: 25px;
+}
+.my-timeover span{
+	background-color: #101010;
+	color:#ffffff;
+	margin:0 5px;
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>${message("admin.main.title")}</title>
+
+
+<link href="${base}/resources/admin/css/common.css" rel="stylesheet" type="text/css" />
+<link href="${base}/resources/admin/css/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${base}/resources/admin/js/jquery.js"></script>
+<style type="text/css">
+*{
+	font: 12px tahoma, Arial, Verdana, sans-serif;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+</style>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $nav = $("#nav a:not(:last)");
+	var $menu = $("#menu dl");
+	var $menuItem = $("#menu a");
+	
+	$nav.click(function() {
+		var $this = $(this);
+		$nav.removeClass("current");
+		$this.addClass("current");
+		var $currentMenu = $($this.attr("href"));
+		$menu.hide();
+		$currentMenu.show();
+		return false;
+	});
+	
+	$menuItem.click(function() {
+		var $this = $(this);
+		$menuItem.removeClass("current");
+		$this.addClass("current");
+	});
+
+});
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		if (self != top) {
+			top.location = self.location;
+		};
+	</script>
+	<table class="main">
+		<tr>
+			<th class="logo">
+				<a href="main">
+					<img src="${base}/resources/admin/images/header_logo1.gif" />
+				</a>
+			</th>
+			<th>
+				<div id="nav" class="nav">
+					<ul>
+						<li>
+							<a href="#product">${message("admin.main.productNav")}</a>
+						</li>
+						<li>
+							<a href="#order">${message("admin.main.orderNav")}</a>
+						</li>
+						<li>
+							<a href="#member">${message("admin.main.memberNav")}</a>
+						</li>
+						<li>
+							<a href="#content">${message("admin.main.contentNav")}</a>
+						</li>
+						<li>
+							<a href="#marketing">${message("admin.main.marketingNav")}</a>
+						</li>
+						<li>
+							<a href="#statistics">${message("admin.main.statisticsNav")}</a>
+						</li>
+						<li>
+							<a href="#system">${message("admin.main.systemNav")}</a>
+						</li>
+						<li>
+							<a href="${base}/" target="_blank">${message("admin.main.home")}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="link">
+					<a href="${base}/" target="_blank">${message("admin.main.official")}</a>|
+					<a href="${base}/" target="_blank">${message("admin.main.bbs")}</a>|
+					<a href="${base}/" target="_blank">${message("admin.main.about")}</a>
+				</div>
+				<div class="link">
+					<strong>
+					[@shiro.authenticated]
+				 		[@shiro.principal name="name"/]
+					[/@shiro.authenticated]
+					</strong>
+					${message("admin.main.hello")}!
+					<a href="${base}/admin/profile/edit" target="iframe">[${message("admin.main.profile")}]</a>
+					<a href="${base}/signout" target="_top">[${message("admin.main.logout")}]</a>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<td id="menu" class="menu">
+				<dl id="product" class="default">
+					<dt>${message("admin.main.productGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/product/list" target="iframe">${message("admin.main.product")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/productCategory/list" target="iframe">${message("admin.main.productCategory")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/parameterGroup/list" target="iframe">${message("admin.main.parameterGroup")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/attribute/list" target="iframe">${message("admin.main.attribute")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/specification/list" target="iframe">${message("admin.main.specification")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/brand/list" target="iframe">${message("admin.main.brand")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/productNotify/list" target="iframe">${message("admin.main.productNotify")}</a>
+						</dd>
+				</dl>
+				<dl id="order">
+					<dt>${message("admin.main.orderGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/order/list" target="iframe">${message("admin.main.order")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/payment/list" target="iframe">${message("admin.main.payment")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/refunds/list" target="iframe">${message("admin.main.refunds")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/shipping/list" target="iframe">${message("admin.main.shipping")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/returns/list" target="iframe">${message("admin.main.returns")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/deliveryCenter/list" target="iframe">${message("admin.main.deliveryCenter")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/deliveryTemplate/list" target="iframe">${message("admin.main.deliveryTemplate")}</a>
+						</dd>
+				</dl>
+				<dl id="member">
+					<dt>${message("admin.main.memberGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/member/list" target="iframe">${message("admin.main.member")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/memberRank/list" target="iframe">${message("admin.main.memberRank")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/memberAttribute/list" target="iframe">${message("admin.main.memberAttribute")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/deposit/list" target="iframe">${message("admin.main.deposit")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/review/list" target="iframe">${message("admin.main.review")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/consultation/list" target="iframe">${message("admin.main.consultation")}</a>
+						</dd>
+				</dl>
+				<dl id="content">
+					<dt>${message("admin.main.contentGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/navigation/list" target="iframe">${message("admin.main.navigation")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/article/list" target="iframe">${message("admin.main.article")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/articleCategory/list" target="iframe">${message("admin.main.articleCategory")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/tag/list" target="iframe">${message("admin.main.tag")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/friendLink/list" target="iframe">${message("admin.main.friendLink")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/adPosition/list" target="iframe">${message("admin.main.adPosition")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/ad/list" target="iframe">${message("admin.main.ad")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/template/list" target="iframe">${message("admin.main.template")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/cache/cacheView" target="iframe">${message("admin.main.cache")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/static/build" target="iframe">${message("admin.main.static")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/index/build" target="iframe">${message("admin.main.index")}</a>
+						</dd>
+				</dl>
+				<dl id="marketing">
+					<dt>${message("admin.main.marketingGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/promotion/list" target="iframe">${message("admin.main.promotion")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/coupon/list" target="iframe">${message("admin.main.coupon")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/seo/list" target="iframe">${message("admin.main.seo")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/sitemap/build" target="iframe">${message("admin.main.sitemap")}</a>
+						</dd>
+				</dl>
+				<dl id="statistics">
+					<dt>${message("admin.main.statisticsGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/statistics/view" target="iframe">${message("admin.main.statistics")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/statistics/setting" target="iframe">${message("admin.main.statisticsSetting")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/sales/view" target="iframe">${message("admin.main.sales")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/salesRanking/list" target="iframe">${message("admin.main.salesRanking")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/purchaseRanking/list" target="iframe">${message("admin.main.purchaseRanking")}</a>
+						</dd>
+				</dl>
+				<dl id="system">
+					<dt>${message("admin.main.systemGroup")}</dt>
+						<dd>
+							<a href="${base}/admin/setting/edit" target="iframe">${message("admin.main.setting")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/area/list" target="iframe">${message("admin.main.area")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/paymentMethod/list" target="iframe">${message("admin.main.paymentMethod")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/shippingMethod/list" target="iframe">${message("admin.main.shippingMethod")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/deliveryCorp/list" target="iframe">${message("admin.main.deliveryCorp")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/paymentPlugin/list" target="iframe">${message("admin.main.paymentPlugin")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/storagePlugin/list" target="iframe">${message("admin.main.storagePlugin")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/admin/list" target="iframe">${message("admin.main.admin")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/role/list" target="iframe">${message("admin.main.role")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/permission/list" target="iframe">${message("admin.main.permission")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/message/send" target="iframe">${message("admin.main.send")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/message/list" target="iframe">${message("admin.main.message")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/message/draft" target="iframe">${message("admin.main.draft")}</a>
+						</dd>
+						<dd>
+							<a href="${base}/admin/log/list" target="iframe">${message("admin.main.log")}</a>
+						</dd>
+				</dl>
+			</td>
+			<td>
+				<iframe id="iframe" name="iframe" src="${base}/admin/common" frameborder="0"></iframe>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

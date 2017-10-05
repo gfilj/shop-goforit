@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>商城</title>
+	
+	
+		<meta name="keywords" content="商城" />
+		<meta name="description" content="商城" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link href="/resources/shop/slider/slider.css" rel="stylesheet" type="text/css" />
+<link href="/resources/shop/css/common.css" rel="stylesheet" type="text/css" />
+<link href="/resources/shop/css/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/resources/shop/js/jquery.js"></script>
+<script type="text/javascript" src="/resources/shop/js/jquery.tools.js"></script>
+<script type="text/javascript" src="/resources/shop/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/resources/shop/slider/slider.js"></script>
+<script type="text/javascript" src="/resources/shop/js/common.js"></script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $slider = $("#slider");
+	var $newArticleTab = $("#newArticle .tab");
+	var $promotionProductTab = $("#promotionProduct .tab");
+	var $promotionProductInfo = $("#promotionProduct .info");
+	var $hotProductTab = $("#hotProduct .tab");
+	var $newProductTab = $("#newProduct .tab");
+	var $hotProductImage = $("#hotProduct img");
+	var $newProductImage = $("#newProduct img");
+	
+	$slider.nivoSlider({
+		effect: "random",
+		animSpeed: 1000,
+		pauseTime: 6000,
+		controlNav: true,
+		keyboardNav: false,
+		captionOpacity: 0.4
+	});
+	
+	$newArticleTab.tabs("#newArticle .tabContent", {
+		tabs: "li",
+		event: "mouseover",
+		initialIndex: 1
+	});
+	
+	$promotionProductTab.tabs("#promotionProduct .tabContent", {
+		tabs: "li",
+		event: "mouseover"
+	});
+	
+	$hotProductTab.tabs("#hotProduct .tabContent", {
+		tabs: "li",
+		event: "mouseover"
+	});
+	
+	$newProductTab.tabs("#newProduct .tabContent", {
+		tabs: "li",
+		event: "mouseover"
+	});
+	
+	function promotionInfo() {
+		$promotionProductInfo.each(function() {
+			var $this = $(this);
+			var beginDate = $this.attr("beginTimeStamp") != null ? new Date(parseFloat($this.attr("beginTimeStamp"))) : null;
+			var endDate = $this.attr("endTimeStamp") != null ? new Date(parseFloat($this.attr("endTimeStamp"))) : null;
+			if (beginDate == null || beginDate <= new Date()) {
+				if (endDate != null && endDate >= new Date()) {
+					var time = (endDate - new Date()) / 1000;
+					$this.html("剩余时间:<em>" + Math.floor(time / (24 * 3600)) + "<\/em> 天 <em>" + Math.floor((time % (24 * 3600)) / 3600) + "<\/em> 时 <em>" + Math.floor((time % 3600) / 60) + "<\/em> 分");
+				} else if (endDate != null && endDate < new Date()) {
+					$this.html("活动已结束");
+				} else {
+					$this.html("正在进行中...");
+				}
+			}
+		});
+	}
+	
+	promotionInfo();
+	/* setInterval(promotionInfo, 60 * 1000); */
+	
+	$hotProductImage.lazyload({
+		threshold: 100,
+		effect: "fadeIn",
+		skip_invisible: false
+	});
+	
+	$newProductImage.lazyload({
+		threshold: 100,
+		effect: "fadeIn",
+		skip_invisible: false
+	});
+
+});
+</script>
+</head>
+<body>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $headerLogin = $("#headerLogin");
+	var $headerRegister = $("#headerRegister");
+	var $headerUsername = $("#headerUsername");
+	var $headerLogout = $("#headerLogout");
+	var $productSearchForm = $("#productSearchForm");
+	var $keyword = $("#productSearchForm input");
+	var defaultKeyword = "商品搜索";
+	
+	var username = getCookie("username");
+	if (username != null) {
+		$headerUsername.text("您好, " + username).show();
+		$headerLogout.show();
+	} else {
+		$headerLogin.show();
+		$headerRegister.show();
+	}
+	
+	$keyword.focus(function() {
+		if ($keyword.val() == defaultKeyword) {
+			$keyword.val("");
+		}
+	});
+	
+	$keyword.blur(function() {
+		if ($keyword.val() == "") {
+			$keyword.val(defaultKeyword);
+		}
+	});
+	
+	$productSearchForm.submit(function() {
+		if ($.trim($keyword.val()) == "" || $keyword.val() == defaultKeyword) {
+			return false;
+		}
+	});
+
+});
+</script>
+<div class="container header">
+	<div class="span5">
+		<div class="logo">
+			<a href="/">
+				<img src="/upload/image/logo1.gif" alt="商城" />
+			</a>
+		</div>
+	</div>
+	<div class="span9">
+<div class="headerAd">
+	</div>	</div>
+	<div class="span10 last">
+		<div class="topNav clearfix">
+			<ul>
+				<li id="headerLogin" class="headerLogin">
+					<a href="/login">登录</a>|
+				</li>
+				<li id="headerRegister" class="headerRegister">
+					<a href="/register">注册</a>|
+				</li>
+				<li id="headerUsername" class="headerUsername"></li>
+				<li id="headerLogout" class="headerLogout">
+					<a href="/logout">[退出]</a>|
+				</li>
+						<li>
+							<a href="/member">会员中心</a>
+							|
+						</li>
+						<li>
+							<a href="/article/list/3">购物指南</a>
+							|
+						</li>
+						<li>
+							<a href="/article/list/7">关于我们</a>
+							
+						</li>
+			</ul>
+		</div>
+		<div class="cart">
+			<a href="/cart/list">购物车</a>
+		</div>
+			<div class="phone">
+				客服热线:
+				<strong>800-000000</strong>
+			</div>
+	</div>
+	<div class="span24">
+		<ul class="mainNav">
+					<li>
+						<a href="/">首页</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/1">时尚女装</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/2">精品男装</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/3">精致内衣</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/4">服饰配件</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/5">时尚女鞋</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/6">流行男鞋</a>
+						|
+					</li>
+					<li>
+						<a href="/product/list/9">童装童鞋</a>
+						
+					</li>
+		</ul>
+	</div>
+	<div class="span24">
+		<div class="tagWrap">
+			<ul class="tag">
+						<li>
+							<a href="/product/list2?tagIds=3">热点</a>
+						</li>
+						<li>
+							<a href="/product/list2?tagIds=4">推荐</a>
+						</li>
+			</ul>
+			<div class="hotSearch">
+					热门搜索:
+						<a href="/product/search?keyword=%E8%A1%A3%E6%9C%8D">衣服</a>
+						<a href="/product/search?keyword=%E8%A3%A4%E5%AD%90">裤子</a>
+						<a href="/product/search?keyword=%E8%A1%AC%E8%A1%AB">衬衫</a>
+						<a href="/product/search?keyword=%E8%A2%9C%E5%AD%90">袜子</a>
+						<a href="/product/search?keyword=%E5%86%AC%E5%AD%A3%E6%96%B0%E6%AC%BE">冬季新款</a>
+						<a href="/product/search?keyword=%E7%A7%8B%E5%AD%A3%E6%96%B0%E6%AC%BE">秋季新款</a>
+						<a href="/product/search?keyword=%E5%A4%8F%E5%AD%A3%E4%BF%83%E9%94%80">夏季促销</a>
+						<a href="/product/search?keyword=%E5%9B%A2%E8%B4%AD">团购</a>
+						<a href="/product/search?keyword=%E9%99%90%E6%97%B6%E9%94%80%E5%94%AE">限时销售</a>
+			</div>
+			<div class="search">
+				<form id="productSearchForm" action="/product/search" method="get">
+					<input name="keyword" class="keyword" value="商品搜索" maxlength="30" />
+					<button type="submit">搜索</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>	<div class="container index">
+		<div class="span18">
+<div id="slider" class="slider">
+	</div>		</div>
+		<div class="span6 last">
+			<div id="newArticle" class="newArticle">
+					<ul class="tab">
+							<li>
+								<a href="/article/list/1" target="_blank">商城动态</a>
+							</li>
+							<li>
+								<a href="/article/list/2" target="_blank">活动促销</a>
+							</li>
+							<li>
+								<a href="/article/list/3" target="_blank">购物指南</a>
+							</li>
+					</ul>
+							<ul class="tabContent">
+							</ul>
+							<ul class="tabContent">
+							</ul>
+							<ul class="tabContent">
+							</ul>
+			</div>
+<div class="rightAd">
+	</div>		</div>
+		<div class="span18">
+			<div class="hotBrand clearfix">
+				<div class="title">
+					<a href="/brand/list/1">所有品牌</a>
+					<strong>热门品牌</strong>BRAND
+				</div>
+				<ul>
+				</ul>
+			</div>
+			<div class="hotProductCategory">
+				<div class="title">
+					<a href="/product_category">所有分类</a>
+					<strong>热门分类</strong>CATEGORY
+				</div>
+				<div class="content">
+						<table>
+								<tr>
+									<th>
+										<a href="/product/list/1">时尚女装</a>
+									</th>
+									<td>
+											<a href="/product/list/11">连衣裙</a>
+											<a href="/product/list/12">针织衫</a>
+											<a href="/product/list/13">短外套</a>
+											<a href="/product/list/14">小西装</a>
+											<a href="/product/list/15">牛仔裤</a>
+											<a href="/product/list/16">T恤</a>
+											<a href="/product/list/17">衬衫</a>
+											<a href="/product/list/18">风衣</a>
+											<a href="/product/list/19">卫衣</a>
+											<a href="/product/list/20">裤子</a>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<a href="/product/list/2">精品男装</a>
+									</th>
+									<td>
+											<a href="/product/list/21">针织衫</a>
+											<a href="/product/list/22">POLO衫</a>
+											<a href="/product/list/23">休闲裤</a>
+											<a href="/product/list/24">牛仔裤</a>
+											<a href="/product/list/25">T恤</a>
+											<a href="/product/list/26">衬衫</a>
+											<a href="/product/list/27">西服</a>
+											<a href="/product/list/28">西裤</a>
+											<a href="/product/list/29">风衣</a>
+											<a href="/product/list/30">卫衣</a>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<a href="/product/list/3">精致内衣</a>
+									</th>
+									<td>
+											<a href="/product/list/31">女式内裤</a>
+											<a href="/product/list/32">男式内裤</a>
+											<a href="/product/list/33">保暖内衣</a>
+											<a href="/product/list/34">塑身衣</a>
+											<a href="/product/list/35">连裤袜</a>
+											<a href="/product/list/36">打底袜</a>
+											<a href="/product/list/37">文胸</a>
+											<a href="/product/list/38">睡衣</a>
+											<a href="/product/list/39">泳装</a>
+											<a href="/product/list/40">浴袍</a>
+									</td>
+								</tr>
+								<tr class="last">
+									<th>
+										<a href="/product/list/4">服饰配件</a>
+									</th>
+									<td>
+											<a href="/product/list/41">女士腰带</a>
+											<a href="/product/list/42">男士皮带</a>
+											<a href="/product/list/43">女士围巾</a>
+											<a href="/product/list/44">男士围巾</a>
+											<a href="/product/list/45">帽子</a>
+											<a href="/product/list/46">手套</a>
+											<a href="/product/list/47">领带</a>
+											<a href="/product/list/48">领结</a>
+											<a href="/product/list/49">发饰</a>
+											<a href="/product/list/50">袖扣</a>
+									</td>
+								</tr>
+						</table>
+				</div>
+			</div>
+		</div>
+		<div class="span6 last">
+			<div id="promotionProduct" class="promotionProduct">
+				<ul class="tab">
+							<li>
+								<a href="/product/list?promotionId=2" target="_blank">双倍积分</a>
+							</li>
+				</ul>
+						<ul class="tabContent">
+						</ul>
+			</div>
+			<div class="newReview">
+				<div class="title">最新评论</div>
+				<ul>
+				</ul>
+			</div>
+		</div>
+		<div class="span24">
+<div class="middleAd">
+	</div>		</div>
+		<div class="span24">
+			<div id="hotProduct" class="hotProduct clearfix">
+					<div class="title">
+						<strong>热门商品</strong>
+						<a href="/product/list?tagIds=1" target="_blank"></a>
+					</div>
+					<ul class="tab">
+							<li>
+								<a href="/product/list/1?tagIds=1" target="_blank">时尚女装</a>
+							</li>
+							<li>
+								<a href="/product/list/2?tagIds=1" target="_blank">精品男装</a>
+							</li>
+							<li>
+								<a href="/product/list/3?tagIds=1" target="_blank">精致内衣</a>
+							</li>
+					</ul>
+					<div class="hotProductAd">
+					</div>
+						<ul class="tabContent">
+									<li>
+										<a href="/product/content/201609/15.html" title="qqqqq" target="_blank"><img src="/upload/image/blank.gif" data-original="3" /></a>
+									</li>
+						</ul>
+						<ul class="tabContent">
+									<li>
+										<a href="/product/content/201609/6.html" title="POLO衣服" target="_blank"><img src="/upload/image/blank.gif" data-original="/upload/image/default_thumbnail.jpg" /></a>
+									</li>
+						</ul>
+						<ul class="tabContent">
+									<li>
+										<a href="/product/content/201609/4.html" title="内裤" target="_blank"><img src="/upload/image/blank.gif" data-original="/upload/image/default_thumbnail.jpg" /></a>
+									</li>
+						</ul>
+			</div>
+		</div>
+		<div class="span24">
+			<div id="newProduct" class="newProduct clearfix">
+					<div class="title">
+						<strong>最新商品</strong>
+						<a href="/product/list?tagIds=2" target="_blank"></a>
+					</div>
+					<ul class="tab">
+							<li>
+								<a href="/product/list/1?tagIds=2" target="_blank">时尚女装</a>
+							</li>
+							<li>
+								<a href="/product/list/2?tagIds=2" target="_blank">精品男装</a>
+							</li>
+							<li>
+								<a href="/product/list/3?tagIds=2" target="_blank">精致内衣</a>
+							</li>
+					</ul>
+					<div class="newProductAd">
+					</div>
+						<ul class="tabContent">
+									<li>
+										<a href="/product/content/201609/2.html" title="浪沙女装" target="_blank"><img src="/upload/image/blank.gif" data-original="/upload/image/default_thumbnail.jpg" /></a>
+									</li>
+						</ul>
+						<ul class="tabContent">
+						</ul>
+						<ul class="tabContent">
+						</ul>
+			</div>
+		</div>
+		<div class="span24">
+			<div class="friendLink">
+				<dl>
+					<dt>合作伙伴</dt>
+							<dd>
+								<a href="http://www.jd.com" target="_blank">京东</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.jd.com" target="_blank">京东</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.alipay.com" target="_blank">支付宝</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.tenpay.com" target="_blank">财付通</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.chinapay.com" target="_blank">银联在线</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.99bill.com" target="_blank">快钱支付</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://down.admin5.com" target="_blank">A5下载</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.kuaidi100.com" target="_blank">快递100</a>
+								|
+							</dd>
+							<dd>
+								<a href="http://www.cnzz.com" target="_blank">站长统计</a>
+								
+							</dd>
+					<dd class="more">
+						<a href="/friendLink">更多</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+<div class="container footer">
+	<div class="span24">
+		<div class="footerAd">
+	</div>	</div>
+	<div class="span24">
+		<ul class="bottomNav">
+					<li>
+						<a href="#">关于我们</a>
+						|
+					</li>
+					<li>
+						<a href="#">联系我们</a>
+						|
+					</li>
+					<li>
+						<a href="#">诚聘英才</a>
+						|
+					</li>
+					<li>
+						<a href="#">法律声明</a>
+						|
+					</li>
+					<li>
+						<a href="/friendLink">友情链接</a>
+						|
+					</li>
+					<li>
+						<a href="/article/list/4" target="_blank">支付方式</a>
+						|
+					</li>
+					<li>
+						<a href="/article/list/5" target="_blank">配送方式</a>
+						|
+					</li>
+					<li>
+						<a href="#">联系方式</a>
+						|
+					</li>
+					<li>
+						<a href="#">联系方式</a>
+						
+					</li>
+		</ul>
+	</div>
+	<div class="span24">
+		<div class="copyright">Copyright © 2005-2013 商城 版权所有</div>
+	</div>
+</div></body>
+</html>
